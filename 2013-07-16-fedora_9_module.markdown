@@ -31,51 +31,51 @@ Linux fedora9.virtual 2.6.25-14.fc9.i686
 ## 第三步 编译module
 
 这只是一个简单的module：  
-mymod.c
+```c mymod.c
 
-    #include <linux/module.h>
-    #include<linux/init.h>
-    #include <linux/moduleparam.h>
-    
-    MODULE_AUTHOR("Coolbit");
-    MODULE_LICENSE("GPL");
-    
-    static int nbr = 10; 
-    module_param(nbr, int, S_IRUGO);
-    
-    static int __init hello_init(void)
-    {
-        int i;
-        for (i = 0; i < nbr; i++) 
-            printk(KERN_ALERT "hello, How are you %d\n", i); 
-        return 0;
-    }
-    
-    static int __exit hello_exit(void)
-    {
-        printk(KERN_ALERT "Goodbye");
-        return 0;
-    }
-    
-    module_init(hello_init);
-    module_exit(hello_exit);
-    
+#include <linux/module.h>
+#include<linux/init.h>
+#include <linux/moduleparam.h>
+
+MODULE_AUTHOR("Coolbit");
+MODULE_LICENSE("GPL");
+
+static int nbr = 10; 
+module_param(nbr, int, S_IRUGO);
+
+static int __init hello_init(void)
+{
+    int i;
+    for (i = 0; i < nbr; i++) 
+        printk(KERN_ALERT "hello, How are you %d\n", i); 
+    return 0;
+}
+
+static int __exit hello_exit(void)
+{
+    printk(KERN_ALERT "Goodbye");
+    return 0;
+}
+
+module_init(hello_init);
+module_exit(hello_exit);
+```
 
 Makefile
+```makefile
+obj-m := modules.o                   #要生成的模块名     
+modules-objs:= mymod.o        #生成这个模块名所需要的目标文件
 
-    obj-m := modules.o                   #要生成的模块名     
-    modules-objs:= mymod.o        #生成这个模块名所需要的目标文件
-    
-    KDIR := /usr/src/linux-2.6.25.14/
-    PWD := $(shell pwd)
-    
-    default:
-        make -C $(KDIR) M=$(PWD) modules
-    
-    clean:
-        rm -rf *.o *.ko *.mod.c .tmp_versions
-    
+KDIR := /usr/src/linux-2.6.25.14/
+PWD := $(shell pwd)
 
+default:
+    make -C $(KDIR) M=$(PWD) modules
+
+clean:
+    rm -rf *.o *.ko *.mod.c .tmp_versions
+    
+```
 然后运行：
 
     make
