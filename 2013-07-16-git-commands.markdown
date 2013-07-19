@@ -5,7 +5,7 @@ date: 2013-07-16 23:17
 comments: true
 categories: git
 ---
-## 使用git和github有一定的时间了。也使用的不少一些git的命令，这篇日志就当一个备忘本吧。
+### 使用git和github有一定的时间了。也使用的不少一些git的命令，这篇日志就当一个备忘本吧。
 
 *   git status -s 用于显示当先git信息
 *   git remote add \[github\] \[http://github.com/XX/XX.git\] 加入远程版本库
