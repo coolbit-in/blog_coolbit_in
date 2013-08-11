@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "rvm和octopress在zsh下的一些异常"
+title: "rvm 和 octopress 在 zsh 下的一些异常"
 date: 2013-07-19 11:35
 comments: true
 categories: linux zsh

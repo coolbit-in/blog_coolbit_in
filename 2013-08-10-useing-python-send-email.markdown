@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "使用python的stmplib模块来发邮件"
+title: "使用 python 的 stmplib 模块来发邮件"
 date: 2013-08-10 17:44
 comments: true
 categories: python
