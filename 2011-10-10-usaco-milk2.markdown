@@ -1,0 +1,66 @@
+---
+layout: post
+title: "usaco水题milk2"
+date: 2011-10-10 00:01
+comments: true
+categories: algorithm
+---
+昨天做这个题想出来的一个算法，效率挺高的，o(M)的，看了看nocow没人写这个方法。
+
+其实很简单就是引入一个栈的思想，每个工人在工作初时刻则入栈，末时刻出栈。栈不为空表明有人在工作，栈为空表示时间空闲。然后注意一些细节问题就可以了。。
+```c
+/*
+ID: lsy11011
+LANG: C
+TASK: milk2
+*/
+#include <stdio.h>
+#include <memory.h>
+int main () {
+    FILE *fin=fopen("milk2.in","r");
+    FILE *fout=fopen("milk2.out","w");
+    int v[1000001];
+    int i,n,a,b,j,st=0;
+    int em=0,bz=0,max_em=0,max_bz=0;
+    memset(v,0,sizeof(v));
+    fscanf(fin,"%d",&n);
+    int left=1000000;
+    int right=0;
+    for (i=1;i<=n;i++) {
+        fscanf(fin,"%d %d",&a,&b);
+        if (a<left)
+            left=a;
+        if (b>right)
+            right=b;
+        v[a]+=1;
+        v[b]-=1;
+    }
+    st=1;
+    for (i=left+1;i<=right;i++) {
+        j=st;
+        st+=v[i];
+        if (st==0) {
+            if (st==j)
+                em+=1;
+            else {
+                bz+=1;
+                if (bz>max_bz)
+                    max_bz=bz;
+                bz=0;
+            }
+        }
+        else {
+            if (j==0) {
+                em+=1;
+                if (em>max_em)
+                    max_em=em;
+                em=0;
+            }
+            else
+                bz+=1;
+        }
+    }
+    fprintf(fout,"%d %d\n",max_bz,max_em);
+    return 0;
+}
+```
