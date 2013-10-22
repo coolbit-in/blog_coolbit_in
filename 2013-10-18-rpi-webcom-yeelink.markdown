@@ -3,7 +3,7 @@ layout: post
 title: "Raspberry Pi + 摄像头 + yeelink.net 定时拍照上传"
 date: 2013-10-18 09:06
 comments: true
-categories: linux,rpi
+categories: linux rpi
 ---
 同学的一个小项目，请我帮忙，酬劳是一顿饭，他们项目具体的内容就不说了，我做的无非是使用装了 Raspbian 的 Raspberry Pi 驱动一个摄像头，每隔N秒拍一张照片发到 [yeelink](http://yeelink.net) 上面去，由于时间紧迫，我尽可能的去**“使用轮子”**而不是**“造轮子”**，最后用我最喜爱的 python 来一个功能组合。
 
