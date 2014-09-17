@@ -18,7 +18,7 @@ categories: linux
 dhcpd 做 pxe 启动的第一站：设置 ip 和指向 tftp-server
 tftp-server 传递基本的内核文件
 httpd 放置系统安装文件。
-
+<!--more--> 
 ##在设置过程中需要注意的事件：
 * 内网没有其他dhcpd的干扰
 * 宿主机的 selinux iptables firewalld 处于关闭状态（尤其是firewalld，它会导致tftp传输的失效）
